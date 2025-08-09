@@ -13,7 +13,7 @@ function solution(bandage, health, attacks) {
     //마지막 공격 시간
     const lastTime = attacks[attacks.length -1][0];
     
-    for(let t = 0; t <= lastTime; t++){
+    for(let t = 1; t <= lastTime; t++){
         const isAttacked = dmgByTime.has(t)
         
         if(isAttacked){
@@ -35,7 +35,7 @@ function solution(bandage, health, attacks) {
         }
         
         //최대 체력
-        if(hp >= maxHP) hp = maxHP;  
+        if(hp > maxHP) hp = maxHP;  
     }
     return hp;
 }
