@@ -1,15 +1,10 @@
 import sys
-import bisect
 input = sys.stdin.readline
 
 N = int(input())
-arr=[]
-for _ in range(N):
-    line = input()
-    arr.extend(map(int,line.split()))
-    
+arr=[int(input()) for _ in range(N)]  
 arr.sort()
-for i in arr:
-    print(i)
+
+print("\n".join(map(str,arr)))
 
     
