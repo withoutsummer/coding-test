@@ -1,22 +1,19 @@
 import sys
-import bisect
+input = sys.stdin.readline
 
 N = int(input())
 A = list(map(int, input().split()))
-A.sort()
-
 M = int(input())
-findArr = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
-result = [0] * M
+freq = {}
+result = []
 
-for idx, val in enumerate(findArr):
-    first_i = bisect.bisect_left(A, val)
-    last_i = bisect.bisect_right(A, val)
+for x in A:
+    freq[x] = freq.get(x,0) +1
+
+for x in arr:
+    cnt=freq.get(x,0)
+    result.append(cnt)
     
-    if first_i == last_i:
-        result[idx] = 0
-    else:
-        result[idx] = last_i - first_i
-
-print("\n".join(map(str,result)))
+print(" ".join(map(str,result)))
