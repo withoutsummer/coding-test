@@ -17,11 +17,3 @@ def solution(k, score):
             
     return answer
             
-        
-
-        
-        
-        
-        
-    
-    return answer
