@@ -4,14 +4,12 @@ def solution(sizes):
     
     for w,h in sizes:
         
+        # 가로를 세로보다 크도록 조건문을 통해 뒤집기
         if h > w:
-            tem = h
-            h = w
-            w = tem
+            h,w = w,h
             
-        if max_w < w:
-            max_w = w
-        if max_h < h:
-            max_h = h
+        # 가로와 세로에서 최대값을 찾기
+        max_w = max(max_w,w)
+        max_h = max(max_h,h)
         
     return max_w * max_h
