@@ -1,18 +1,13 @@
-from collections import Counter
-
 def solution(citations):
     citations.sort()
     n = len(citations)
 
-    ok = []
+    max_h = 0
     for i,c in enumerate(citations):
         h = n - i
         
         if c >= h:
-            ok.append(h)
-    
-
-    if ok:
-        return ok[0]
-    else:
-        return 0
+            if max_h < h:
+                max_h = h
+                
+    return max_h
