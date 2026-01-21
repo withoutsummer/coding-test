@@ -1,29 +1,22 @@
-from collections import deque
-
 def solution(progresses, speeds):
-    days = []
+    n = len(progresses)
+    days =[] # 배포 가능한 요일
     
-    for i, p in enumerate(progresses):
-        remain = 100 - p
-        day = (remain + speeds[i] - 1) // speeds[i]  # math.ceil 올림 나눗셈
-        days.append(day)
-    
-
-    d_days = deque(days)
-    result =[]
-
-    while d_days:
-        cur = d_days.popleft()
-        count = 1
-    
-        for i in range(len(d_days)):
+    for i,(pr,sp) in enumerate(zip(progresses,speeds)):
+        if (100-pr) % sp == 0:
+            days.append((100-pr)//sp)
+        else:
+            days.append(((100-pr)//sp)+1)
         
-            if cur >= d_days[0]:
-                count += 1
-                d_days.popleft()
-            else:
-                break
-        
-        result.append(count)
-    
+    result = []
+    current_release_day = days[0]
+    count = 1
+    for v in days[1:]:
+        if v <= current_release_day:
+            count += 1
+        else:
+            result.append(count)
+            current_release_day = v
+            count = 1
+    result.append(count)        
     return result
