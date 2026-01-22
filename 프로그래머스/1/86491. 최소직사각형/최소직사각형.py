@@ -1,15 +1,18 @@
 def solution(sizes):
-    max_w = 0
-    max_h = 0
+    # 가로를 최대, 세로를 최솟값으로 정렬 수 가로, 세로 결정
+    max_width, max_height = 0,0
+    # print(max_width,max_height)
     
     for w,h in sizes:
+        # print(w, h)
         
-        # 가로를 세로보다 크도록 조건문을 통해 뒤집기
-        if h > w:
-            h,w = w,h
-            
-        # 가로와 세로에서 최대값을 찾기
-        max_w = max(max_w,w)
-        max_h = max(max_h,h)
+        if h > w :
+            w, h = h,w
         
-    return max_w * max_h
+        if max_width < w:
+            max_width = w
+        
+        if max_height < h:
+            max_height = h
+    
+    return max_width * max_height
