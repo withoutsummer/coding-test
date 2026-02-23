@@ -22,11 +22,10 @@ for i in range(N):
         if grid[i][j] == '1' and not visited[i][j]:
             q.append((i,j))
             visited[i][j] = True
-            count = 0
+            count = 1
 
             while q:
                 curr_x, curr_y = q.popleft()
-                count += 1
 
                 for k in range(4):
                     nx = curr_x + vx[k]
@@ -35,6 +34,7 @@ for i in range(N):
                     if 0 <= nx < N and 0 <= ny < N and not visited[nx][ny] and grid[nx][ny] == '1':
                         q.append((nx,ny))
                         visited[nx][ny] = True
+                        count += 1
 
             ans.append(count)
 
